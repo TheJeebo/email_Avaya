@@ -5,6 +5,8 @@ Function send_Email(to_Number As String, Total_Vol As Long, Ser_Lev As Double, M
     With OutMail
         .To = to_Number
         .Body = "SCE " & Format(Now, "hh:mm AM/PM") & "  Q: " & Total_Vol & "  SL: " & Format(Ser_Lev, "00.0") & "  MaxA: " & Max_Avail
+        
+        'since many emails are sent out every 30 minutes we will delete them to keep the outbox clear
         .DeleteAfterSubmit = True
         .Send
     End With
